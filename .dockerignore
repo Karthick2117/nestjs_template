@@ -1,0 +1,14 @@
+# Ignore dependency directories to keep build context lean
+**/node_modules
+
+# Ignore VCS metadata and IDE files
+.git
+.gitignore
+.idea
+
+# Ignore local environment artifacts
+*.log
+.env
+
+# Docker build artifacts not needed in context
+Docker/**/*.log
