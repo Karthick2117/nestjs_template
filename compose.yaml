@@ -27,8 +27,10 @@ services:
           target: /app/test
         - action: sync+restart
           path: package.json
+          target: /app/package.json
         - action: sync+restart
-          path: package-lock.json
+          path: bun.lock
+          target: /app/bun.lock
   mongo:
     build:
       context: .

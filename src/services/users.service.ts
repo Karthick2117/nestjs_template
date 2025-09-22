@@ -1,18 +1,10 @@
 import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@m8a/nestjs-typegoose';
+import { plainToInstance } from 'class-transformer';
 import type { ReturnModelType } from '@typegoose/typegoose';
-import type { Types } from 'mongoose';
-import { CreateUserDto } from '../models/requests/dto/create-user.dto';
+import { CreateUserDto } from '../models/request/dto/create-user.dto';
+import { UserResponseDto } from '../models/response/dto/user-response.dto';
 import { User } from '../models/user.model';
-
-type UserPlain = {
-  _id: Types.ObjectId | string;
-  name: string;
-  email: string;
-  bio?: string;
-  createdAt?: Date;
-  updatedAt?: Date;
-};
 
 @Injectable()
 export class UsersService {
@@ -21,12 +13,15 @@ export class UsersService {
     private readonly userModel: ReturnModelType<typeof User>,
   ) {}
 
-  listUsers(): Promise<UserPlain[]> {
-    return this.userModel.find().lean().exec();
+  async listUsers(): Promise<UserResponseDto[]> {
+    const docs = await this.userModel.find().lean().exec();
+    return plainToInstance(UserResponseDto, docs, { excludeExtraneousValues: true });
   }
 
-  async createUser(payload: CreateUserDto): Promise<UserPlain> {
+  async createUser(payload: CreateUserDto): Promise<UserResponseDto> {
     const created = await this.userModel.create(payload);
-    return created.toObject();
+    return plainToInstance(UserResponseDto, created.toObject(), {
+      excludeExtraneousValues: true,
+    });
   }
 }
