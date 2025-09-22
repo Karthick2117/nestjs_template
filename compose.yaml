@@ -5,7 +5,7 @@ services:
       dockerfile: docker/nest/dockerfile
     command: bun run start:dev
     env_file:
-      - .env
+      - .env.template
     ports:
       - "3000:3000"
     depends_on:

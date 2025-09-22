@@ -8,7 +8,7 @@
 
 # Ignore local environment artifacts
 *.log
-.env
+.env.template
 
 # Docker build artifacts not needed in context
 Docker/**/*.log
