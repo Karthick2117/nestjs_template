@@ -2,8 +2,8 @@ import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@m8a/nestjs-typegoose';
 import { plainToInstance } from 'class-transformer';
 import type { ReturnModelType } from '@typegoose/typegoose';
-import { CreateUserDto } from '../models/request/dto/create-user.dto';
-import { UserResponseDto } from '../models/response/dto/user-response.dto';
+import { CreateUserDto } from '../models/requests/dto/create-user.dto';
+import { UserResponseDto } from '../models/responses/dto/user-response.dto';
 import { User } from '../models/user.model';
 
 @Injectable()
