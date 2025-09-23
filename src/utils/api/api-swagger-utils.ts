@@ -1,14 +1,9 @@
 import { applyDecorators, Type } from '@nestjs/common';
 import { ApiExtraModels, ApiOkResponse, getSchemaPath } from '@nestjs/swagger';
 
-class DataEnvelope<T> {
-  data!: T;
-}
+class DataEnvelope<T> {}
 
-class ListEnvelope<T> {
-  data!: T[];
-  total!: number;
-}
+class ListEnvelope<T> {}
 
 export const ApiOkResponseData = <TModel extends Type<unknown>>(
   model: TModel,
