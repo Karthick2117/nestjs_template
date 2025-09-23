@@ -1,19 +1,29 @@
 import { Body, Controller, Get, Post } from '@nestjs/common';
+import { ApiTags } from '@nestjs/swagger';
 import { UsersService } from '../services/users.service';
 import { CreateUserDto } from '../models/requests/dto/create-user.dto';
 import { UserResponseDto } from '../models/responses/dto/user-response.dto';
+import { Data, List } from '../api/api-types';
+import { ApiOkResponseData, ApiOkResponseList } from '../api/api-swagger-utils';
 
+@ApiTags('users')
 @Controller('users')
 export class UsersController {
   constructor(private readonly usersService: UsersService) {}
 
   @Get()
-  getUsers(): Promise<UserResponseDto[]> {
-    return this.usersService.listUsers();
+  @ApiOkResponseList(UserResponseDto)
+  async getUsers(): Promise<List<UserResponseDto>> {
+    const data = await this.usersService.listUsers();
+    return { data, total: data.length };
   }
 
   @Post()
-  createUser(@Body() payload: CreateUserDto): Promise<UserResponseDto> {
-    return this.usersService.createUser(payload);
+  @ApiOkResponseData(UserResponseDto)
+  async createUser(
+    @Body() payload: CreateUserDto,
+  ): Promise<Data<UserResponseDto>> {
+    const data = await this.usersService.createUser(payload);
+    return { data };
   }
 }
