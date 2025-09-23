@@ -5,7 +5,7 @@ import { CreateUserDto } from '../models/dto/user/create-user.dto';
 import { UserResponseDto } from '../models/dto/user/user-response.dto';
 import { Data, List } from '../utils/api/api-types';
 import { ApiOkResponseData, ApiOkResponseList } from '../utils/api/api-swagger-utils';
-import { ParseObjectIdPipe } from '../utils/database/parse-objectid.utils'; // 👈
+import { ParseObjectIdPipe } from '../utils/database/parse-objectid.utils';
 
 @ApiTags('users')
 @Controller('users')

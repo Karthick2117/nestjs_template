@@ -13,17 +13,11 @@ error_handler() { log "ERROR at line ${1}: ${2}"; exit 1; }
 script_dir() { cd -- "$(dirname -- "${BASH_SOURCE[0]}")" &>/dev/null && pwd -P; }
 
 detect_root() {
-  local sd; sd="$(script_dir)"
-  if [[ -d "${sd}/.." && -d "${sd}/../client" ]]; then
-    realpath "${sd}/.."; return
-  fi
   if command -v git >/dev/null 2>&1 && git rev-parse --show-toplevel >/dev/null 2>&1; then
     git rev-parse --show-toplevel; return
   fi
-  if [[ -d "${PWD}/client" || -d "${PWD}/server" ]]; then
-    echo "${PWD}"; return
-  fi
-  fail "Cannot locate project root. Run inside the repo or keep script in scripts/."
+
+  realpath "$(script_dir)/.."
 }
 
 ROOT="$(detect_root)"
@@ -56,12 +50,8 @@ docker compose down || log "docker compose down failed or no containers to stop;
 echo ""
 
 log "Installing bun dependencies..."
-if [[ -d "${ROOT}" ]]; then
-  cd "${ROOT}"
-  bun install
-else
-  log "Server dir not found at ${ROOT} -> skipping."
-fi
+cd "${ROOT}"
+bun install
 echo ""
 
 log "Building and starting new containers..."
