@@ -1,26 +1,18 @@
 import { applyDecorators, Type } from '@nestjs/common';
 import { ApiExtraModels, ApiOkResponse, getSchemaPath } from '@nestjs/swagger';
 
-class DataEnvelope {}
-
-class ListEnvelope {}
-
 export const ApiOkResponseData = <TModel extends Type<unknown>>(
   model: TModel,
 ) =>
   applyDecorators(
-    ApiExtraModels(DataEnvelope, model),
+    ApiExtraModels(model),
     ApiOkResponse({
       schema: {
-        allOf: [
-          { $ref: getSchemaPath(DataEnvelope) },
-          {
-            properties: {
-              data: { $ref: getSchemaPath(model) },
-            },
-            required: ['data'],
-          },
-        ],
+        type: 'object',
+        properties: {
+          data: { $ref: getSchemaPath(model) },
+        },
+        required: ['data'],
       },
     }),
   );
@@ -29,22 +21,18 @@ export const ApiOkResponseList = <TModel extends Type<unknown>>(
   model: TModel,
 ) =>
   applyDecorators(
-    ApiExtraModels(ListEnvelope, model),
+    ApiExtraModels(model),
     ApiOkResponse({
       schema: {
-        allOf: [
-          { $ref: getSchemaPath(ListEnvelope) },
-          {
-            properties: {
-              data: {
-                type: 'array',
-                items: { $ref: getSchemaPath(model) },
-              },
-              total: { type: 'number', example: 42 },
-            },
-            required: ['data', 'total'],
+        type: 'object',
+        properties: {
+          data: {
+            type: 'array',
+            items: { $ref: getSchemaPath(model) },
           },
-        ],
+          total: { type: 'number', example: 42 },
+        },
+        required: ['data', 'total'],
       },
     }),
   );
