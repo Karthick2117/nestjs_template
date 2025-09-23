@@ -6,6 +6,7 @@ Run the bootstrap script to install dependencies, build the project, and launch 
 ```bash
 ./scripts/on_start.sh
 ```
+
 The application listens on http://localhost:3000 and exposes Swagger UI at http://localhost:3000/swagger.
 
 ## Project Structure
