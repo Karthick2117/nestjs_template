@@ -4,7 +4,10 @@ import { UserService } from '../services/user.service';
 import { CreateUserDto } from '../models/dto/user/create-user.dto';
 import { UserResponseDto } from '../models/dto/user/user-response.dto';
 import { Data, List } from '../utils/api/api-types';
-import { ApiOkResponseData, ApiOkResponseList } from '../utils/api/api-swagger-utils';
+import {
+  ApiOkResponseData,
+  ApiOkResponseList,
+} from '../utils/api/api-swagger-utils';
 import { ParseObjectIdPipe } from '../utils/database/parse-objectid.utils';
 
 @ApiTags('users')
@@ -23,14 +26,20 @@ export class UserController {
   @Post()
   @ApiOperation({ summary: 'Create user' })
   @ApiOkResponseData(UserResponseDto)
-  async createUser(@Body() payload: CreateUserDto): Promise<Data<UserResponseDto>> {
+  async createUser(
+    @Body() payload: CreateUserDto,
+  ): Promise<Data<UserResponseDto>> {
     const data = await this.userService.createUser(payload);
     return { data };
   }
 
   @Get(':id')
   @ApiOperation({ summary: 'Get user by id' })
-  @ApiParam({ name: 'id', description: 'MongoDB ObjectId', example: '66f0b7c1f2b6a1a9e0c12345' })
+  @ApiParam({
+    name: 'id',
+    description: 'MongoDB ObjectId',
+    example: '66f0b7c1f2b6a1a9e0c12345',
+  })
   @ApiOkResponseData(UserResponseDto)
   async getUserById(
     @Param('id', ParseObjectIdPipe) id: string,

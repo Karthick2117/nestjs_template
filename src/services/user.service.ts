@@ -8,22 +8,30 @@ import { User } from '../models/user.model';
 
 @Injectable()
 export class UserService {
-  constructor(@InjectModel(User) private readonly userModel: ReturnModelType<typeof User>) {}
+  constructor(
+    @InjectModel(User) private readonly userModel: ReturnModelType<typeof User>,
+  ) {}
 
   async listUsers(): Promise<UserResponseDto[]> {
     const docs = await this.userModel.find().lean().exec();
     if (!docs) throw new NotFoundException(`No users found`);
-    return plainToInstance(UserResponseDto, docs, { excludeExtraneousValues: true });
+    return plainToInstance(UserResponseDto, docs, {
+      excludeExtraneousValues: true,
+    });
   }
 
   async createUser(payload: CreateUserDto): Promise<UserResponseDto> {
     const created = await this.userModel.create(payload);
-    return plainToInstance(UserResponseDto, created.toObject(), { excludeExtraneousValues: true });
+    return plainToInstance(UserResponseDto, created.toObject(), {
+      excludeExtraneousValues: true,
+    });
   }
 
   async findById(id: string): Promise<UserResponseDto> {
     const doc = await this.userModel.findById(id).lean().exec();
     if (!doc) throw new NotFoundException(`User with id "${id}" not found`);
-    return plainToInstance(UserResponseDto, doc, { excludeExtraneousValues: true });
+    return plainToInstance(UserResponseDto, doc, {
+      excludeExtraneousValues: true,
+    });
   }
 }
