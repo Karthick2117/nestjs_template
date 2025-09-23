@@ -1,5 +1,5 @@
 
-# NestJS Template
+# NestJS API Template
 
 ## Start the API
 Run the bootstrap script to install dependencies, build the project, and launch the development server.
