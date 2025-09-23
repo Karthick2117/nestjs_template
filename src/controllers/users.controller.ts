@@ -3,11 +3,8 @@ import { ApiTags } from '@nestjs/swagger';
 import { UsersService } from '../services/users.service';
 import { CreateUserDto } from '../models/requests/dto/create-user.dto';
 import { UserResponseDto } from '../models/responses/dto/user-response.dto';
-import { Data, List } from '../common/api-types';
-import {
-  ApiOkResponseData,
-  ApiOkResponseList,
-} from '../common/api-swagger-helpers';
+import { Data, List } from '../api/api-types';
+import { ApiOkResponseData, ApiOkResponseList } from '../api/api-swagger-utils';
 
 @ApiTags('users')
 @Controller('users')

@@ -1,6 +1,6 @@
 import { Module } from '@nestjs/common';
 import { TypegooseModule } from '@m8a/nestjs-typegoose';
-import { getMongoUri } from '../../utils/database/mongo.util';
+import { getMongoUri } from '../../utils/database/mongo.utils';
 
 @Module({
   imports: [
