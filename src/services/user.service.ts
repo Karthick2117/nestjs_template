@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectModel } from '@m8a/nestjs-typegoose';
 import { plainToInstance } from 'class-transformer';
 import type { ReturnModelType } from '@typegoose/typegoose';
@@ -8,10 +8,7 @@ import { User } from '../models/user.model';
 
 @Injectable()
 export class UserService {
-  constructor(
-    @InjectModel(User)
-    private readonly userModel: ReturnModelType<typeof User>,
-  ) {}
+  constructor(@InjectModel(User) private readonly userModel: ReturnModelType<typeof User>) {}
 
   async listUsers(): Promise<UserResponseDto[]> {
     const docs = await this.userModel.find().lean().exec();
@@ -25,5 +22,11 @@ export class UserService {
     return plainToInstance(UserResponseDto, created.toObject(), {
       excludeExtraneousValues: true,
     });
+  }
+
+  async findById(id: string): Promise<UserResponseDto> {
+    const doc = await this.userModel.findById(id).lean().exec();
+    if (!doc) throw new NotFoundException(`User with id "${id}" not found`);
+    return plainToInstance(UserResponseDto, doc, { excludeExtraneousValues: true });
   }
 }
