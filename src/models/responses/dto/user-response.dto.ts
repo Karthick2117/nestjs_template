@@ -1,8 +1,7 @@
-import { Expose, Transform } from 'class-transformer';
+import { Expose } from 'class-transformer';
 
 export class UserResponseDto {
   @Expose()
-  @Transform(({ obj }) => obj._id?.toString() ?? obj.id)
   id!: string;
 
   @Expose()

@@ -1,6 +1,17 @@
-import { modelOptions, prop } from '@typegoose/typegoose';
+import { modelOptions, prop, plugin } from '@typegoose/typegoose';
+import leanId from 'mongoose-lean-id';
 
-@modelOptions({ schemaOptions: { collection: 'users', timestamps: true } })
+@plugin(leanId)
+@modelOptions({
+  schemaOptions: {
+    collection: 'users',
+    timestamps: true,
+    toJSON: {
+      virtuals: true,
+      versionKey: false,
+    },
+  },
+})
 export class User {
   @prop({ required: true, trim: true })
   name!: string;

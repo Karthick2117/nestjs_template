@@ -15,7 +15,9 @@ export class UsersService {
 
   async listUsers(): Promise<UserResponseDto[]> {
     const docs = await this.userModel.find().lean().exec();
-    return plainToInstance(UserResponseDto, docs, { excludeExtraneousValues: true });
+    return plainToInstance(UserResponseDto, docs, {
+      excludeExtraneousValues: true,
+    });
   }
 
   async createUser(payload: CreateUserDto): Promise<UserResponseDto> {
