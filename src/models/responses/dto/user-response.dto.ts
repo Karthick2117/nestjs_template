@@ -9,15 +9,15 @@ export class UserResponseDto {
   @Expose()
   id!: string;
 
-  @ApiProperty({ example: 'Alice Martin' })
+  @ApiProperty({ example: 'bob dole' })
   @Expose()
   name!: string;
 
-  @ApiProperty({ example: 'alice@example.com', format: 'email' })
+  @ApiProperty({ example: 'bob@example.com', format: 'email' })
   @Expose()
   email!: string;
 
-  @ApiProperty({ required: false, example: 'Coffee lover and JS dev' })
+  @ApiProperty({ required: false, example: 'i am a bio' })
   @Expose()
   bio?: string;
 
