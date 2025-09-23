@@ -2,7 +2,7 @@
 # NestJS API Template
 
 ## Start the API
-Run the bootstrap script to install dependencies, build the project, and launch the development server.
+Run the bootstrap script to install dependencies, build the project, and launch the development server (using docker and bun).
 ```bash
 ./scripts/on_start.sh
 ```
