@@ -2,12 +2,12 @@ import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@m8a/nestjs-typegoose';
 import { plainToInstance } from 'class-transformer';
 import type { ReturnModelType } from '@typegoose/typegoose';
-import { CreateUserDto } from '../models/requests/dto/create-user.dto';
-import { UserResponseDto } from '../models/responses/dto/user-response.dto';
+import { CreateUserDto } from '../models/dto/user/create-user.dto';
+import { UserResponseDto } from '../models/dto/user/user-response.dto';
 import { User } from '../models/user.model';
 
 @Injectable()
-export class UsersService {
+export class UserService {
   constructor(
     @InjectModel(User)
     private readonly userModel: ReturnModelType<typeof User>,

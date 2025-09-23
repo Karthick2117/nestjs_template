@@ -1,8 +1,8 @@
 import { Module } from '@nestjs/common';
-import { UsersModule } from './components/users.module';
+import { UserModule } from './components/user.module';
 
 const featureModules = [
-  UsersModule,
+  UserModule,
   // Add new feature modules here as your application grows
   // e.g., GroupsModule, ClassesModule
 ];

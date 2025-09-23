@@ -1,8 +1,8 @@
 import { Body, Controller, Get, Post } from '@nestjs/common';
 import { ApiOperation, ApiTags } from '@nestjs/swagger';
-import { UsersService } from '../services/users.service';
-import { CreateUserDto } from '../models/requests/dto/create-user.dto';
-import { UserResponseDto } from '../models/responses/dto/user-response.dto';
+import { UserService } from '../services/user.service';
+import { CreateUserDto } from '../models/dto/user/create-user.dto';
+import { UserResponseDto } from '../models/dto/user/user-response.dto';
 import { Data, List } from '../utils/api/api-types';
 import {
   ApiOkResponseData,
@@ -12,7 +12,7 @@ import {
 @ApiTags('users')
 @Controller('users')
 export class UsersController {
-  constructor(private readonly usersService: UsersService) {}
+  constructor(private readonly usersService: UserService) {}
 
   @Get()
   @ApiOperation({ summary: 'List users' })
