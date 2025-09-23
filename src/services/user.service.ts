@@ -29,7 +29,7 @@ export class UserService {
 
   async findById(id: string): Promise<UserResponseDto> {
     const doc = await this.userModel.findById(id).lean().exec();
-    if (!doc) throw new NotFoundException(`User with id "${id}" not found`);
+    if (!doc) throw new NotFoundException(`User with id '${id}' not found`);
     return plainToInstance(UserResponseDto, doc, {
       excludeExtraneousValues: true,
     });
