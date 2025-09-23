@@ -12,16 +12,13 @@ export class UserService {
 
   async listUsers(): Promise<UserResponseDto[]> {
     const docs = await this.userModel.find().lean().exec();
-    return plainToInstance(UserResponseDto, docs, {
-      excludeExtraneousValues: true,
-    });
+    if (!docs) throw new NotFoundException(`No users found`);
+    return plainToInstance(UserResponseDto, docs, { excludeExtraneousValues: true });
   }
 
   async createUser(payload: CreateUserDto): Promise<UserResponseDto> {
     const created = await this.userModel.create(payload);
-    return plainToInstance(UserResponseDto, created.toObject(), {
-      excludeExtraneousValues: true,
-    });
+    return plainToInstance(UserResponseDto, created.toObject(), { excludeExtraneousValues: true });
   }
 
   async findById(id: string): Promise<UserResponseDto> {
